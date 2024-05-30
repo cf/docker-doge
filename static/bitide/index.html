@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>self["MonacoEnvironment"] = (function (paths) {
+          return {
+            globalAPI: false,
+            getWorkerUrl : function (moduleId, label) {
+              var result =  paths[label];
+              if (/^((http:)|(https:)|(file:)|(\/\/))/.test(result)) {
+                var currentUrl = String(window.location);
+                var currentOrigin = currentUrl.substr(0, currentUrl.length - window.location.hash.length - window.location.search.length - window.location.pathname.length);
+                if (result.substring(0, currentOrigin.length) !== currentOrigin) {
+                  var js = '/*' + label + '*/importScripts("' + result + '");';
+                  var blob = new Blob([js], { type: 'application/javascript' });
+                  return URL.createObjectURL(blob);
+                }
+              }
+              return result;
+            }
+          };
+        })({
+  "editorWorkerService": "/monacoeditorwork/editor.worker.bundle.js",
+  "css": "/monacoeditorwork/css.worker.bundle.js",
+  "html": "/monacoeditorwork/html.worker.bundle.js",
+  "json": "/monacoeditorwork/json.worker.bundle.js",
+  "typescript": "/monacoeditorwork/ts.worker.bundle.js",
+  "javascript": "/monacoeditorwork/ts.worker.bundle.js",
+  "less": "/monacoeditorwork/css.worker.bundle.js",
+  "scss": "/monacoeditorwork/css.worker.bundle.js",
+  "handlebars": "/monacoeditorwork/html.worker.bundle.js",
+  "razor": "/monacoeditorwork/html.worker.bundle.js"
+});</script>
+
+    <script>window.__LIQUID_DEFAULT_MODE__=false;</script>
+    <script>window.__DOGE_DEFAULT_MODE__=true;</script>
+    <script src="/obuffer.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+    <title>BitIDE - The Dogecoin IDE by QED</title>
+
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" property="og:image" content="https://bitide.qedprotocol.com/img/bitidesocial.png" />
+    <meta data-rh="true" name="twitter:image" content="https://bitide.qedprotocol.com/bitidesocial.png" />
+    <meta data-rh="true" property="og:url" content="https://bitide.qedprotocol.com/" />
+    <meta data-rh="true" property="og:locale" content="en" />
+
+    <meta data-rh="true" property="og:title" content="BitIDE - Your Favorite Bitcoin IDE" />
+    <meta data-rh="true" name="description" content="The best place to build on Bitcoin." />
+    <meta data-rh="true" property="og:description" content="The best place to build on Bitcoin." />
+    <style type="text/css">
+      html,
+      body {
+        background: #2f2f2f;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        overflow: none;
+      }
+      #loadingOverlay {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: none;
+        padding: 0;
+        margin: 0;
+        position: fixed;
+        top: 0;
+        left:0;
+        z-index: 99999;
+        transition: opacity 500ms linear;
+        background: #1b1b1b;
+        opacity: 1;
+        flex-direction: column;
+      }
+      #loadingOverlay svg {
+        padding-top:24px;
+      }
+      #loadingOverlay .loadingText {
+        padding-top:28px;
+        font-size: 10px;
+        color:#888;
+        font-family: Menlo, Monaco, monospace;
+      }
+    </style>
+    <script type="text/javascript">
+      (function (f, b) { if (!b.__SV) { var e, g, i, h; window.mixpanel = b; b._i = []; b.init = function (e, f, c) { function g(a, d) { var b = d.split("."); 2 == b.length && ((a = a[b[0]]), (d = b[1])); a[d] = function () { a.push([d].concat(Array.prototype.slice.call(arguments, 0))); }; } var a = b; "undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel"); a.people = a.people || []; a.toString = function (a) { var d = "mixpanel"; "mixpanel" !== c && (d += "." + c); a || (d += " (stub)"); return d; }; a.people.toString = function () { return a.toString(1) + ".people (stub)"; }; i = "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split( " "); for (h = 0; h < i.length; h++) g(a, i[h]); var j = "set set_once union unset remove delete".split(" "); a.get_group = function () { function b(c) { d[c] = function () { call2_args = arguments; call2 = [c].concat(Array.prototype.slice.call(call2_args, 0)); a.push([e, call2]); }; } for ( var d = {}, e = ["get_group"].concat( Array.prototype.slice.call(arguments, 0)), c = 0; c < j.length; c++) b(j[c]); return d; }; b._i.push([e, f, c]); }; b.__SV = 1.2; e = f.createElement("script"); e.type = "text/javascript"; e.async = !0; e.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === f.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; g = f.getElementsByTagName("script")[0]; g.parentNode.insertBefore(e, g); } })(document, window.mixpanel || []);
+    </script>
+    <script async type="module" crossorigin src="/assets/index-m2lsLoBm.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-fylXcVlI.css">
+  </head>
+
+  <body>
+    <div id="root">
+    </div>
+
+    <div id="loadingOverlay">
+      <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 6.25C0 2.79822 2.79822 0 6.25 0H93.75C97.2018 0 100 2.79822 100 6.25V93.75C100 97.2018 97.2018 100 93.75 100H6.25C2.79822 100 0 97.2018 0 93.75V6.25Z" fill="#171717"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M93.75 1H6.25C3.35051 1 1 3.35051 1 6.25V93.75C1 96.6495 3.35051 99 6.25 99H93.75C96.6495 99 99 96.6495 99 93.75V6.25C99 3.35051 96.6495 1 93.75 1ZM6.25 0C2.79822 0 0 2.79822 0 6.25V93.75C0 97.2018 2.79822 100 6.25 100H93.75C97.2018 100 100 97.2018 100 93.75V6.25C100 2.79822 97.2018 0 93.75 0H6.25Z" fill="#787878"/>
+        <path d="M70.7821 44.2788C71.7151 38.0419 66.9665 34.6891 60.4733 32.4525L62.5796 24.0039L57.4369 22.7222L55.3864 30.9482C54.0345 30.6113 52.6457 30.2935 51.266 29.9785L53.3312 21.6984L48.1915 20.4167L46.0837 28.8624C44.9647 28.6075 43.8661 28.3556 42.7998 28.0905L42.8056 28.0641L35.7135 26.2933L34.3455 31.786C34.3455 31.786 38.1611 32.6605 38.0806 32.7147C40.1634 33.2346 40.5397 34.613 40.4767 35.7057L38.0775 45.3304C38.221 45.367 38.4072 45.4198 38.6123 45.5018C38.4409 45.4593 38.2578 45.4125 38.0688 45.3671L34.7057 58.8499C34.4508 59.4827 33.805 60.4319 32.349 60.0715C32.4003 60.1462 28.611 59.1385 28.611 59.1385L26.0579 65.0253L32.7502 66.6936C33.9953 67.0056 35.2154 67.3322 36.4165 67.6398L34.2884 76.1851L39.425 77.4667L41.5328 69.0123C42.936 69.3931 44.2982 69.7446 45.6311 70.0757L43.5308 78.4906L48.6734 79.7722L50.8016 71.2431C59.571 72.9026 66.1654 72.2332 68.9411 64.3017C71.1777 57.9154 68.8296 54.2316 64.2157 51.8295C67.5758 51.0546 70.1068 48.8443 70.7821 44.2788ZM59.032 60.7556C57.4427 67.1418 46.6901 63.6894 43.2041 62.8238L46.0281 51.5028C49.5141 52.3729 60.693 54.0954 59.032 60.7556ZM60.6227 44.1865C59.1726 49.9956 50.2231 47.0442 47.32 46.3206L49.8805 36.0528C52.7836 36.7764 62.1328 38.1269 60.6227 44.1865Z" fill="#ECECEC"/>
+        </svg>
+        <div class="loadingText">BitIDE v0.8.6 - Loading...</div>
+    </div>        
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DKBWVLSEW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-7DKBWVLSEW");
+    </script>
+  </body>
+</html>

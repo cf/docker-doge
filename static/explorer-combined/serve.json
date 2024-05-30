@@ -1,0 +1,13 @@
+
+{
+  "rewrites": [
+    { "source": "blocks/**", "destination": "/index.html" },
+    { "source": "block/**", "destination": "/index.html" },
+    { "source": "tx/**", "destination": "/index.html" },
+    { "source": "address/**", "destination": "/index.html" },
+    { "source": "scripthash/**", "destination": "/index.html" },
+    { "source": "scan-qr", "destination": "/index.html" },
+    { "source": "mempool", "destination": "/index.html" },
+    { "source": "search", "destination": "/index.html" }
+  ]
+}
